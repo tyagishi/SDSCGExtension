@@ -59,6 +59,9 @@ extension CGSize {
     public func cgPoint() -> CGPoint {
         return CGPoint(x: self.width, y: self.height)
     }
+    public func cgVector() -> CGVector {
+        return CGVector(dx: self.width, dy: self.height)
+    }
 }
 
 extension CGPoint {
@@ -67,5 +70,12 @@ extension CGPoint {
     }
     public func shift(_ size: CGSize) -> CGPoint {
         return CGPoint(x: self.x + size.width, y: self.y + size.height)
+    }
+}
+
+// for working together with XCUIElement
+extension CGPoint {
+    public func cgVector() -> CGVector {
+        return CGVector(dx: self.x, dy: self.y)
     }
 }
