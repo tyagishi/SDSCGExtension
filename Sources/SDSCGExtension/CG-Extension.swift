@@ -32,10 +32,19 @@ extension CGSize {
         return CGSize(width: self.width * value, height: self.height * value)
     }
     
+    public func expand(_ size: CGSize) -> CGSize {
+        return CGSize(width: self.width + size.width, height: self.height + size.height)
+    }
     public func expand(_ xDir: CGFloat,_ yDir:CGFloat) -> CGSize {
         return CGSize(width: self.width + xDir, height: self.height + yDir)
     }
-    
+    public func move(_ size: CGSize) -> CGSize {
+        return CGSize(width: self.width + size.width, height: self.height + size.height)
+    }
+    public func move(_ xDir: CGFloat,_ yDir:CGFloat) -> CGSize {
+        return CGSize(width: self.width + xDir, height: self.height + yDir)
+    }
+
     public var isLandscape:Bool {
         return self.width >= self.height
     }
