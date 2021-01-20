@@ -55,6 +55,8 @@ extension CGSize {
     
 }
 
+// MARK: conversion between CGPoint/CGSize/CGVector
+
 extension CGSize {
     public func cgPoint() -> CGPoint {
         return CGPoint(x: self.width, y: self.height)
@@ -65,20 +67,19 @@ extension CGSize {
 }
 
 extension CGPoint {
-    public func shift(_ diffX: CGFloat, _ diffY: CGFloat) -> CGPoint {
-        return CGPoint(x: self.x + diffX, y: self.y + diffY)
-    }
-    public func shift(_ size: CGSize) -> CGPoint {
-        return CGPoint(x: self.x + size.width, y: self.y + size.height)
-    }
-}
-
-// for working together with XCUIElement
-extension CGPoint {
     public func cgSize() -> CGSize {
         return CGSize(width: self.x, height: self.y)
     }
     public func cgVector() -> CGVector {
         return CGVector(dx: self.x, dy: self.y)
+    }
+}
+
+extension CGPoint {
+    public func shift(_ diffX: CGFloat, _ diffY: CGFloat) -> CGPoint {
+        return CGPoint(x: self.x + diffX, y: self.y + diffY)
+    }
+    public func shift(_ size: CGSize) -> CGPoint {
+        return CGPoint(x: self.x + size.width, y: self.y + size.height)
     }
 }
