@@ -55,6 +55,20 @@ extension CGSize {
     
 }
 
+// MARK: CGSize / calc
+extension CGSize {
+    public func center() -> CGPoint {
+        return CGPoint(x: self.width / 2, y: self.height / 2)
+    }
+}
+
+// MARK: CGPoint / operation
+extension CGPoint {
+    public func move(_ vector: CGVector) -> CGPoint {
+        return CGPoint(x: self.x + vector.dx, y: self.y + vector.dy)
+    }
+}
+
 // MARK: conversion between CGPoint/CGSize/CGVector
 
 extension CGSize {
