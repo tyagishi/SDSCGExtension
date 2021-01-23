@@ -89,6 +89,16 @@ extension CGPoint {
     }
 }
 
+extension CGVector {
+    public func scale(_ value:CGFloat) -> CGVector {
+        return CGVector(dx: self.dx * value, dy: self.dy * value)
+    }
+    public func scale(_ xValue: CGFloat, _ yValue: CGFloat) -> CGVector {
+        return CGVector(dx: self.dx * xValue, dy: self.dy * yValue)
+    }
+}
+
+
 extension CGPoint {
     public func shift(_ diffX: CGFloat, _ diffY: CGFloat) -> CGPoint {
         return CGPoint(x: self.x + diffX, y: self.y + diffY)
