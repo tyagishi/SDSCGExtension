@@ -8,6 +8,18 @@
 
 import Foundation
 
+extension CGRect {
+    public func rectCenter() -> CGPoint {
+        return CGPoint(x: self.origin.x + self.size.width / 2.0, y: self.origin.y + self.size.height / 2.0)
+    }
+    public func cornerXmaxYmax() -> CGPoint {
+        return CGPoint(x: self.origin.x + self.size.width, y: self.origin.y + self.size.height)
+    }
+    public func ratioPoint(_ ratioVector: CGVector) -> CGPoint {
+        return CGPoint(x: self.origin.x + self.size.width * ratioVector.dx, y: self.origin.y + self.size.height * ratioVector.dy)
+    }
+}
+
 extension CGSize {
     static public func verticalScale(base:CGSize, target:CGSize) -> CGFloat {
         return target.height / base.height
@@ -80,6 +92,11 @@ extension CGPoint {
     public func shift(_ size: CGSize) -> CGPoint {
         return CGPoint(x: self.x + size.width, y: self.y + size.height)
     }
+    
+    public func diffVectorFrom(_ from:CGPoint) -> CGVector {
+        return CGVector(dx: self.x - from.x, dy: self.y - from.y)
+    }
+    
 }
 
 // MARK: CGVector / operation
