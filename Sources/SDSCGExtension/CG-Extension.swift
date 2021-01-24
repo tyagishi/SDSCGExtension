@@ -76,8 +76,18 @@ extension CGPoint {
     }
 }
 
-// MARK: conversion between CGPoint/CGSize/CGVector
+// MARK: CGVector / operation
+extension CGVector {
+    public func scale(_ value:CGFloat) -> CGVector {
+        return CGVector(dx: self.dx * value, dy: self.dy * value)
+    }
+    public func scale(_ xValue: CGFloat, _ yValue: CGFloat) -> CGVector {
+        return CGVector(dx: self.dx * xValue, dy: self.dy * yValue)
+    }
+}
 
+
+// MARK: conversion between CGPoint/CGSize/CGVector
 extension CGSize {
     public func cgPoint() -> CGPoint {
         return CGPoint(x: self.width, y: self.height)
@@ -97,11 +107,12 @@ extension CGPoint {
 }
 
 extension CGVector {
-    public func scale(_ value:CGFloat) -> CGVector {
-        return CGVector(dx: self.dx * value, dy: self.dy * value)
+    public func cgPoint() -> CGPoint {
+        return CGPoint(x: self.dx, y: self.dy)
     }
-    public func scale(_ xValue: CGFloat, _ yValue: CGFloat) -> CGVector {
-        return CGVector(dx: self.dx * xValue, dy: self.dy * yValue)
+    public func cgSize() -> CGSize {
+        return CGSize(width: self.dx, height: self.dy)
     }
 }
+
 
