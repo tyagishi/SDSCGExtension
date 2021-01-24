@@ -31,7 +31,10 @@ extension CGSize {
     public func scale(_ value:CGFloat) -> CGSize {
         return CGSize(width: self.width * value, height: self.height * value)
     }
-    
+    public func scale(_ xValue:CGFloat, _ yValue:CGFloat) -> CGSize {
+        return CGSize(width: self.width * xValue, height: self.height * yValue)
+    }
+
     public func expand(_ size: CGSize) -> CGSize {
         return CGSize(width: self.width + size.width, height: self.height + size.height)
     }
