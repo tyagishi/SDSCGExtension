@@ -85,6 +85,9 @@ extension CGPoint {
     public func move(_ vector: CGVector) -> CGPoint {
         return CGPoint(x: self.x + vector.dx, y: self.y + vector.dy)
     }
+    public func move(_ diffX: CGFloat, _ diffY: CGFloat) -> CGPoint {
+        return CGPoint(x: self.x + diffX, y: self.y + diffY)
+    }
 
     public func shift(_ diffX: CGFloat, _ diffY: CGFloat) -> CGPoint {
         return CGPoint(x: self.x + diffX, y: self.y + diffY)
