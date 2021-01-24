@@ -67,6 +67,13 @@ extension CGPoint {
     public func move(_ vector: CGVector) -> CGPoint {
         return CGPoint(x: self.x + vector.dx, y: self.y + vector.dy)
     }
+
+    public func shift(_ diffX: CGFloat, _ diffY: CGFloat) -> CGPoint {
+        return CGPoint(x: self.x + diffX, y: self.y + diffY)
+    }
+    public func shift(_ size: CGSize) -> CGPoint {
+        return CGPoint(x: self.x + size.width, y: self.y + size.height)
+    }
 }
 
 // MARK: conversion between CGPoint/CGSize/CGVector
@@ -98,12 +105,3 @@ extension CGVector {
     }
 }
 
-
-extension CGPoint {
-    public func shift(_ diffX: CGFloat, _ diffY: CGFloat) -> CGPoint {
-        return CGPoint(x: self.x + diffX, y: self.y + diffY)
-    }
-    public func shift(_ size: CGSize) -> CGPoint {
-        return CGPoint(x: self.x + size.width, y: self.y + size.height)
-    }
-}
