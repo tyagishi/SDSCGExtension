@@ -60,6 +60,9 @@ extension CGSize {
     public func center() -> CGPoint {
         return CGPoint(x: self.width / 2, y: self.height / 2)
     }
+    public func squaredArea() -> CGFloat {
+        return self.width * self.height
+    }
 }
 
 // MARK: CGPoint / operation
