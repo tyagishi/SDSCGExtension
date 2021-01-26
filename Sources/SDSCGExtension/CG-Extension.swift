@@ -19,14 +19,8 @@ extension CGRect {
     public func ratioPoint(_ ratioVector: CGVector) -> CGPoint {
         return CGPoint(x: self.origin.x + self.size.width * ratioVector.dx, y: self.origin.y + self.size.height * ratioVector.dy)
     }
-    
-    public func convertFromLowerLeftOriginToUpperLeftOrigin(_ canvasSize: CGSize) -> CGRect {
-        let newOrigin = CGPoint(x: self.origin.x, y: canvasSize.height - self.origin.y - self.size.height)
-        return CGRect(origin: newOrigin, size: self.size)
-    }
-    public func convertFromUpperLeftOriginToLowerLeftOrigin(_ canvasSize: CGSize) -> CGRect {
-        let newOrigin = CGPoint(x: self.origin.x, y: canvasSize.height - self.origin.y - self.size.height)
-        return CGRect(origin: newOrigin, size: self.size)
+    public func scale(_ value:CGFloat) -> CGRect {
+        return CGRect(origin: self.origin.scale(value), size: self.size.scale(value))
     }
 }
 
@@ -36,6 +30,12 @@ extension CGSize {
     }
     static public func horizontalScale(base: CGSize, target: CGSize) -> CGFloat {
         return target.width / base.width
+    }
+    
+    static public func scales(base: CGSize, target: CGSize) -> (vertical:CGFloat, horizontal: CGFloat, min: CGFloat, max: CGFloat) {
+        let verticalScale = CGSize.verticalScale(base: base, target: target)
+        let horizontalScale = CGSize.horizontalScale(base: base, target: target)
+        return (verticalScale, horizontalScale, min(verticalScale,horizontalScale), max(verticalScale, horizontalScale))
     }
     
     static public func minScale(base: CGSize, target:CGSize) -> CGFloat {
@@ -108,6 +108,10 @@ extension CGPoint {
     
     public func diffVectorFrom(_ from:CGPoint) -> CGVector {
         return CGVector(dx: self.x - from.x, dy: self.y - from.y)
+    }
+    
+    public func scale(_ value:CGFloat) -> CGPoint {
+        return CGPoint(x: self.x * value, y: self.y * value)
     }
     
 }
