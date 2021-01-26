@@ -80,7 +80,7 @@ extension CGSize {
 
 // MARK: convenient calc for SwiftUI scaledToFit placement (calc CGRect for scaledToFit view in specified size)
 extension CGSize {
-    func placeInSizedCanvas(_ canvas:CGSize) -> CGRect {
+    public func placeInSizedCanvas(_ canvas:CGSize) -> CGRect {
         let scaleAlongX = canvas.width / self.width
         let scaleAlongY = canvas.height / self.height
         let usedScale = min(scaleAlongX, scaleAlongY)
