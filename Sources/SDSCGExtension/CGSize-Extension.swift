@@ -1,28 +1,12 @@
 //
-//  CG-Extension.swift
-//  ExifClip2020
+//  File.swift
 //
-//  Created by Tomoaki Yagishita on 2020/05/26.
-//  Copyright © 2020 SmallDeskSoftware. All rights reserved.
+//  Created by : Tomoaki Yagishita on 2021/01/26
+//  © 2021  SmallDeskSoftware
 //
 
 import Foundation
 import CoreGraphics
-
-extension CGRect {
-    public func rectCenter() -> CGPoint {
-        return CGPoint(x: self.origin.x + self.size.width / 2.0, y: self.origin.y + self.size.height / 2.0)
-    }
-    public func cornerXmaxYmax() -> CGPoint {
-        return CGPoint(x: self.origin.x + self.size.width, y: self.origin.y + self.size.height)
-    }
-    public func ratioPoint(_ ratioVector: CGVector) -> CGPoint {
-        return CGPoint(x: self.origin.x + self.size.width * ratioVector.dx, y: self.origin.y + self.size.height * ratioVector.dy)
-    }
-    public func scale(_ value:CGFloat) -> CGRect {
-        return CGRect(origin: self.origin.scale(value), size: self.size.scale(value))
-    }
-}
 
 extension CGSize {
     static public func verticalScale(base:CGSize, target:CGSize) -> CGFloat {
@@ -79,7 +63,6 @@ extension CGSize {
     }
     
 }
-
 // MARK: CGSize / calc
 extension CGSize {
     public func center() -> CGPoint {
@@ -90,43 +73,6 @@ extension CGSize {
     }
 }
 
-// MARK: CGPoint / operation
-extension CGPoint {
-    public func move(_ vector: CGVector) -> CGPoint {
-        return CGPoint(x: self.x + vector.dx, y: self.y + vector.dy)
-    }
-    public func move(_ diffX: CGFloat, _ diffY: CGFloat) -> CGPoint {
-        return CGPoint(x: self.x + diffX, y: self.y + diffY)
-    }
-
-    public func shift(_ diffX: CGFloat, _ diffY: CGFloat) -> CGPoint {
-        return CGPoint(x: self.x + diffX, y: self.y + diffY)
-    }
-    public func shift(_ size: CGSize) -> CGPoint {
-        return CGPoint(x: self.x + size.width, y: self.y + size.height)
-    }
-    
-    public func diffVectorFrom(_ from:CGPoint) -> CGVector {
-        return CGVector(dx: self.x - from.x, dy: self.y - from.y)
-    }
-    
-    public func scale(_ value:CGFloat) -> CGPoint {
-        return CGPoint(x: self.x * value, y: self.y * value)
-    }
-    
-}
-
-// MARK: CGVector / operation
-extension CGVector {
-    public func scale(_ value:CGFloat) -> CGVector {
-        return CGVector(dx: self.dx * value, dy: self.dy * value)
-    }
-    public func scale(_ xValue: CGFloat, _ yValue: CGFloat) -> CGVector {
-        return CGVector(dx: self.dx * xValue, dy: self.dy * yValue)
-    }
-}
-
-
 // MARK: conversion between CGPoint/CGSize/CGVector
 extension CGSize {
     public func cgPoint() -> CGPoint {
@@ -136,23 +82,3 @@ extension CGSize {
         return CGVector(dx: self.width, dy: self.height)
     }
 }
-
-extension CGPoint {
-    public func cgSize() -> CGSize {
-        return CGSize(width: self.x, height: self.y)
-    }
-    public func cgVector() -> CGVector {
-        return CGVector(dx: self.x, dy: self.y)
-    }
-}
-
-extension CGVector {
-    public func cgPoint() -> CGPoint {
-        return CGPoint(x: self.dx, y: self.dy)
-    }
-    public func cgSize() -> CGSize {
-        return CGSize(width: self.dx, height: self.dy)
-    }
-}
-
-
