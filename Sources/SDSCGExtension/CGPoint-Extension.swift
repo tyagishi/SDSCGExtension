@@ -31,7 +31,16 @@ extension CGPoint {
     public func scale(_ value:CGFloat) -> CGPoint {
         return CGPoint(x: self.x * value, y: self.y * value)
     }
-    
+    public func scale(_ scaleX:CGFloat, _ scaleY: CGFloat) -> CGPoint {
+        return CGPoint(x: self.x * scaleX, y: self.y * scaleY)
+    }
+}
+
+// MARK: coordinate calc
+extension CGPoint {
+    public func flipY(_ maxY: CGFloat) -> CGPoint {
+        return CGPoint(x: self.x, y: maxY - self.y)
+    }
 }
 
 // MARK: conversion between CGPoint/CGSize/CGVector

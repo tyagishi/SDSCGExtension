@@ -8,6 +8,7 @@
 import Foundation
 import CoreGraphics
 
+// MARK: CGSize / operation
 extension CGSize {
     static public func verticalScale(base:CGSize, target:CGSize) -> CGFloat {
         return target.height / base.height
@@ -40,6 +41,9 @@ extension CGSize {
     public func scale(_ xValue:CGFloat, _ yValue:CGFloat) -> CGSize {
         return CGSize(width: self.width * xValue, height: self.height * yValue)
     }
+    public func scale(_ vector: CGVector) -> CGSize {
+        return CGSize(width: self.width * vector.dx, height: self.height * vector.dy)
+    }
 
     public func expand(_ size: CGSize) -> CGSize {
         return CGSize(width: self.width + size.width, height: self.height + size.height)
@@ -63,7 +67,8 @@ extension CGSize {
     }
     
 }
-// MARK: CGSize / calc
+
+// MARK: coordinate calc
 extension CGSize {
     public func center() -> CGPoint {
         return CGPoint(x: self.width / 2, y: self.height / 2)
@@ -72,6 +77,19 @@ extension CGSize {
         return self.width * self.height
     }
 }
+
+// MARK: convenient calc for SwiftUI scaledToFit placement (calc CGRect for scaledToFit view in specified size)
+extension CGSize {
+    func placeInSizedCanvas(_ canvas:CGSize) -> CGRect {
+        let scaleAlongX = canvas.width / self.width
+        let scaleAlongY = canvas.height / self.height
+        let usedScale = min(scaleAlongX, scaleAlongY)
+        let originX = (canvas.width - self.width * usedScale) / 2.0
+        let originY = (canvas.height - self.height * usedScale) / 2.0
+        return CGRect(origin: CGPoint(x: originX, y: originY), size: self.scale(usedScale))
+    }
+}
+
 
 // MARK: conversion between CGPoint/CGSize/CGVector
 extension CGSize {
