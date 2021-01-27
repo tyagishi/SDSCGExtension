@@ -40,4 +40,15 @@ extension CGRect {
     }
 }
 
+extension CGRect {
+    public func convertFromLowerLeftOriginToUpperLeftOrigin(_ canvasSize: CGSize) -> CGRect {
+        let newOrigin = CGPoint(x: self.origin.x, y: canvasSize.height - self.origin.y - self.size.height)
+        return CGRect(origin: newOrigin, size: self.size)
+    }
+    public func convertFromUpperLeftOriginToLowerLeftOrigin(_ canvasSize: CGSize) -> CGRect {
+        let newOrigin = CGPoint(x: self.origin.x, y: canvasSize.height - self.origin.y - self.size.height)
+        return CGRect(origin: newOrigin, size: self.size)
+    }
+}
+
 
