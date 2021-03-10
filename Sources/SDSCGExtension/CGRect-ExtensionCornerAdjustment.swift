@@ -29,4 +29,28 @@ extension CGRect {
         let newOrigin = CGPoint(x: self.origin.x + (self.width - newWidth), y: self.origin.y)
         return CGRect(origin: newOrigin, size: CGSize(width: newWidth, height: newHeight))
     }
+    
+    public func moveUpperRightCornerToNewWidthKeepingSizeRatio(_ newWidth: CGFloat ) -> CGRect {
+        let newHeight = self.height * newWidth / self.width
+        let newOrigin = CGPoint(x: self.origin.x, y: self.origin.y + self.height - newHeight)
+        return CGRect(origin: newOrigin, size: CGSize(width: newWidth, height: newHeight))
+    }
+    
+    public func moveUpperRightCornerToNewHeightKeepingSizeRatio(_ newHeight: CGFloat ) -> CGRect {
+        let newWidth = self.width * newHeight / self.height
+        let newOrigin = CGPoint(x: self.origin.x, y: self.origin.y + self.height - newHeight)
+        return CGRect(origin: newOrigin, size: CGSize(width: newWidth, height: newHeight))
+    }
+
+    public func moveUpperLeftCornerToNewWidthKeepingSizeRatio(_ newWidth: CGFloat ) -> CGRect {
+        let newHeight = self.height * newWidth / self.width
+        let newOrigin = CGPoint(x: self.origin.x + self.width - newWidth, y: self.origin.y + self.height - newHeight)
+        return CGRect(origin: newOrigin, size: CGSize(width: newWidth, height: newHeight))
+    }
+    
+    public func moveUpperLeftCornerToNewHeightKeepingSizeRatio(_ newHeight: CGFloat ) -> CGRect {
+        let newWidth = self.width * newHeight / self.height
+        let newOrigin = CGPoint(x: self.origin.x + self.width - newWidth, y: self.origin.y + self.height - newHeight)
+        return CGRect(origin: newOrigin, size: CGSize(width: newWidth, height: newHeight))
+    }
 }
