@@ -41,6 +41,25 @@ extension CGRect {
 }
 
 extension CGRect {
+    public var originX:CGFloat {
+        get {
+            return self.origin.x
+        }
+        set(newValue) {
+            self.origin.x = newValue
+        }
+    }
+    public var originY:CGFloat {
+        get {
+            return self.origin.y
+        }
+        set(newValue) {
+            self.origin.y = newValue
+        }
+    }
+}
+
+extension CGRect {
     public func convertFromLowerLeftOriginToUpperLeftOrigin(_ canvasSize: CGSize) -> CGRect {
         let newOrigin = CGPoint(x: self.origin.x, y: canvasSize.height - self.origin.y - self.size.height)
         return CGRect(origin: newOrigin, size: self.size)
