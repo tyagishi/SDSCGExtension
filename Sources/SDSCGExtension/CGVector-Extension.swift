@@ -8,6 +8,13 @@
 import Foundation
 import CoreGraphics
 
+// MARK: CGVector / flip
+extension CGVector {
+    public func flipY() -> CGVector {
+        return CGVector(dx: self.dx, dy: self.dy * -1)
+    }
+}
+
 // MARK: CGVector / operation
 extension CGVector {
     public func scale(_ value:CGFloat) -> CGVector {
