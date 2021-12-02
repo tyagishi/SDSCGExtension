@@ -34,6 +34,9 @@ extension CGPoint {
     public func scale(_ scaleX:CGFloat, _ scaleY: CGFloat) -> CGPoint {
         return CGPoint(x: self.x * scaleX, y: self.y * scaleY)
     }
+    func scale(_ scale: CGVector) -> CGPoint {
+        return CGPoint(x: self.x * scale.dx, y: self.y * scale.dy)
+    }
 }
 
 // MARK: coordinate calc

@@ -15,8 +15,10 @@ extension CGVector {
     }
 }
 
-// MARK: CGVector / operation
+// MARK: CGVector / scale
 extension CGVector {
+    public static var scaleOne = CGVector(dx: 1, dy: 1)
+
     public func scale(_ value:CGFloat) -> CGVector {
         return CGVector(dx: self.dx * value, dy: self.dy * value)
     }
