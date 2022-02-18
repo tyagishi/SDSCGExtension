@@ -55,3 +55,11 @@ extension CGPoint {
         return CGVector(dx: self.x, dy: self.y)
     }
 }
+
+// MARK: map between two CGRect coordinate (assume for shrinking focus area from from-CGRect to to-CGRect, then need to calc point's new coordinate in to-CGRect)
+extension CGPoint {
+    public func map(from: CGRect, to: CGRect) -> CGPoint {
+        let originDiff = from.origin.diffVectorFrom(to.origin)
+        return CGPoint(x: self.x + originDiff.dx, y: self.y + originDiff.dy)
+    }
+}
