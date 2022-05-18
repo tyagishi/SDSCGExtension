@@ -70,4 +70,11 @@ extension CGRect {
     }
 }
 
+extension CGRect {
+    //
+    public func expand(top: CGFloat = 0.0, bottom: CGFloat = 0.0, left: CGFloat = 0.0, right: CGFloat = 0.0) -> CGRect {
+        return CGRect(x: self.originX - left, y: self.originY - top, width: self.width + left + right , height: self.height + top + bottom)
+    }
+}
+
 
