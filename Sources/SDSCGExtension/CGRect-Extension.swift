@@ -77,4 +77,13 @@ extension CGRect {
     }
 }
 
+extension CGRect {
+    public func LUpoint() -> CGPoint {
+        return CGPoint(x: self.minX, y: self.minY)
+    }
+    
+    public func center() -> CGPoint {
+        return CGPoint(x: self.originX + self.width * 0.5, y: self.originY + self.height * 0.5)
+    }
+}
 

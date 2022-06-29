@@ -6,8 +6,8 @@ import PackageDescription
 let package = Package(
     name: "SDSCGExtension",
     platforms: [
-        .macOS(.v10_14),
-        .iOS(.v13)
+        .macOS(.v11),
+        .iOS(.v14)
     ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
