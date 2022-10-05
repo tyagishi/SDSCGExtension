@@ -71,6 +71,13 @@ extension CGRect {
 }
 
 extension CGRect {
+    // change width with keeping rectangle center at same point
+    public func changeWidth(to newWidth:CGFloat) -> CGRect {
+        let diffToNewWidth = newWidth - self.width
+        return CGRect(x: self.originX - diffToNewWidth / 2.0, y: self.originY,
+                      width: newWidth, height: self.height)
+    }
+
     // assumed: upper-left origin
     public func expand(top: CGFloat = 0.0, bottom: CGFloat = 0.0, left: CGFloat = 0.0, right: CGFloat = 0.0) -> CGRect {
         return CGRect(x: self.originX - left, y: self.originY - top, width: self.width + left + right , height: self.height + top + bottom)
