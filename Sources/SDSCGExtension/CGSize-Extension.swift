@@ -8,6 +8,15 @@
 import Foundation
 import CoreGraphics
 
+extension CGSize {
+    public func bigger(_ another: CGSize) -> CGSize {
+        return CGSize(width: max(self.width, another.width), height: max(self.height, another.height))
+    }
+    public func smaller(_ another: CGSize) -> CGSize {
+        return CGSize(width: min(self.width, another.width), height: min(self.height, another.height))
+    }
+}
+
 // MARK: CGSize / operation
 extension CGSize {
     static public func verticalScale(base:CGSize, target:CGSize) -> CGFloat {

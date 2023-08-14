@@ -8,6 +8,12 @@
 import Foundation
 import CoreGraphics
 
+extension CGRect: CustomStringConvertible {
+    public var description: String {
+        "origin: \(self.origin), size: \(self.size)"
+    }
+}
+
 // MARK: CGRect / operation
 extension CGRect {
     public func scale(_ value:CGFloat) -> CGRect {
