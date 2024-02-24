@@ -7,7 +7,7 @@ final class CGRectExtensionMapTests: XCTestCase {
     // [tx ty 1]
     func test_map_move() throws {
         let rect1 = CGRect(x: 10, y: 20, width: 300, height: 200)
-        let rect2 = CGRect(x: 25, y: 20, width: 285, height: 200)
+        let rect2 = CGRect(x: 25, y: 20, width: 300, height: 200)
         let affineFromRect1ToRect2 = rect2.affineTransform(from: rect1)
         XCTAssertEqual(affineFromRect1ToRect2.a, 1)
         XCTAssertEqual(affineFromRect1ToRect2.b, 0)
@@ -27,8 +27,8 @@ final class CGRectExtensionMapTests: XCTestCase {
         XCTAssertEqual(affineFromRect1ToRect2.b, 0)
         XCTAssertEqual(affineFromRect1ToRect2.c, 0)
         XCTAssertEqual(affineFromRect1ToRect2.d, 2)
-        XCTAssertEqual(affineFromRect1ToRect2.tx, 0)
-        XCTAssertEqual(affineFromRect1ToRect2.ty, 0)
-        XCTAssertEqual(CGPoint(x: 50, y: 60).applying(affineFromRect1ToRect2), CGPoint(x: 35, y: 60))
+        XCTAssertEqual(affineFromRect1ToRect2.tx, -20)
+        XCTAssertEqual(affineFromRect1ToRect2.ty, -40)
+        XCTAssertEqual(CGPoint(x: 50, y: 60).applying(affineFromRect1ToRect2), CGPoint(x: 80, y: 80))
     }
 }

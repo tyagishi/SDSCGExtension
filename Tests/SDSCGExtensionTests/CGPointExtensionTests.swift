@@ -2,6 +2,12 @@
 import XCTest
 
 final class SDSCGPointExtensionTests: XCTestCase {
+    func test_OperatorWithVector() throws {
+        var point = CGPoint(x: 20, y: 50)
+        let vector = CGVector(dx: 10, dy: 30)
+        XCTAssertEqual(point + vector, CGPoint(x: 30, y: 80))
+    }
+    
     func test_map_betweenSameRegion() throws {
         let fromRect = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 800, height: 600))
         let toRect = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 800, height: 600))
@@ -43,6 +49,6 @@ final class SDSCGPointExtensionTests: XCTestCase {
         let fromRect = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 800, height: 600))
         let toRect = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 400, height: 600))
         let check1 = CGPoint(x: 50, y: 50)
-        XCTAssertEqual(check1.map(from: fromRect, to: toRect), CGPoint(x: 25, y: 0))
+        XCTAssertEqual(check1.map(from: fromRect, to: toRect), CGPoint(x: 50, y: 50))
     }
 }

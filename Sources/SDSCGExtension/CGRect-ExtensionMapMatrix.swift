@@ -12,8 +12,8 @@ extension CGRect {
     func affineTransform(from: CGRect) -> CGAffineTransform {
         let tx = from.originX - self.originX
         let ty = from.originY - self.originY
-        let scaleX = from.width / self.width
-        let scaleY = from.height / self.height
+        let scaleX = self.width / from.width
+        let scaleY = self.height / from.height
         return CGAffineTransform.identity.scaledBy(x: scaleX, y: scaleY).translatedBy(x: tx, y: ty)
     }
 }
