@@ -10,10 +10,10 @@ import CoreGraphics
 
 // MARK: CGPoint / operation
 extension CGPoint {
-    public static func +(lhs: inout CGPoint, rhs: CGVector) -> CGPoint{
+    public static func +(lhs: CGPoint, rhs: CGVector) -> CGPoint{
         return CGPoint(x: lhs.x + rhs.dx, y: lhs.y + rhs.dy)
     }
-    public static func -(lhs: inout CGPoint, rhs: CGVector) -> CGPoint{
+    public static func -(lhs: CGPoint, rhs: CGVector) -> CGPoint{
         return CGPoint(x: lhs.x - rhs.dx, y: lhs.y - rhs.dy)
     }
 
