@@ -9,8 +9,11 @@ import Foundation
 import CoreGraphics
 
 extension CGSize{
-    public static func +(lhs: Self, rhs: Self) -> CGSize{
+    public static func +(lhs: Self, rhs: Self) -> CGSize {
         CGSize(width: lhs.width + rhs.width, height: lhs.height + rhs.height)
+    }
+    public static func +=(lhs: inout Self, rhs: Self) {
+        lhs = lhs + rhs
     }
 }
 

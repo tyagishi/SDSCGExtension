@@ -16,4 +16,12 @@ final class CGSizeTests: XCTestCase {
         
         XCTAssertEqual(oneTwo + fiveSix, CGSize(width: 6, height: 8))
     }
+    func test_plusEqual() async throws {
+        var oneTwo = CGSize(width: 1, height: 2)
+        let fiveSix = CGSize(width: 5, height: 6)
+
+        oneTwo += fiveSix
+        
+        XCTAssertEqual(oneTwo, CGSize(width: 6, height: 8))
+    }
 }
