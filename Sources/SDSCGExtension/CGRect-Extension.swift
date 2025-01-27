@@ -14,6 +14,19 @@ extension CGRect: CustomStringConvertible {
     }
 }
 
+// MARK: convenient init
+extension CGRect {
+    // init CGRect from 2 points
+    // flipped == true -> origin is located at upper-left (SwiftUI, iOS)
+    // flipped == false -> origin is located at lower-left (macOS)
+    public init(point1: CGPoint, point2: CGPoint, flipped: Bool = true) {
+        let size = CGSize(point1: point1, point2: point2)
+        let origin = CGPoint(x: min(point1.x, point2.x), y: flipped ? min(point1.y, point2.y) : max(point1.y, point2.y))
+        self.init(origin: origin, size: size)
+    }
+}
+
+
 // MARK: CGRect / operation
 extension CGRect {
     public func scale(_ value:CGFloat) -> CGRect {

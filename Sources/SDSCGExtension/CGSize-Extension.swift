@@ -8,6 +8,13 @@
 import Foundation
 import CoreGraphics
 
+// MARK: convenient init
+extension CGSize {
+    public init(point1: CGPoint, point2: CGPoint) {
+        self.init(width: abs(point1.x - point2.x), height: abs(point1.y - point2.y))
+    }
+}
+
 extension CGSize{
     public static func +(lhs: Self, rhs: Self) -> CGSize {
         CGSize(width: lhs.width + rhs.width, height: lhs.height + rhs.height)
