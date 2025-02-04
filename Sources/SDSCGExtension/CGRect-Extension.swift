@@ -8,7 +8,7 @@
 import Foundation
 import CoreGraphics
 
-extension CGRect: CustomStringConvertible {
+extension CGRect: @retroactive CustomStringConvertible {
     public var description: String {
         "origin: \(self.origin), size: \(self.size)"
     }
