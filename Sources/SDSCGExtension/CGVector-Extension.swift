@@ -8,6 +8,12 @@
 import Foundation
 import CoreGraphics
 
+extension CGVector {
+    public init(from: CGPoint, to: CGPoint) {
+        self.init(dx: to.x - from.x, dy: to.y - from.y)
+    }
+}
+
 // MARK: CGVector / flip
 extension CGVector {
     public func flipY() -> CGVector {
