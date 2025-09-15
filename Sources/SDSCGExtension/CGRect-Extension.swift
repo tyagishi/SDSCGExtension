@@ -104,10 +104,20 @@ extension CGRect {
 }
 
 extension CGRect {
-    public func LUpoint() -> CGPoint {
+    public func LUpoint() -> CGPoint { // left-upper
         return CGPoint(x: self.minX, y: self.minY)
     }
-    
+    public func LBpoint() -> CGPoint { // left-bottom
+        return CGPoint(x: self.minX, y: self.maxY)
+    }
+
+    public func RUpoint() -> CGPoint { // right-upper
+        return CGPoint(x: self.maxX, y: self.minY)
+    }
+    public func RBpoint() -> CGPoint { // right-bottom
+        return CGPoint(x: self.maxX, y: self.maxY)
+    }
+
     public func center() -> CGPoint {
         return CGPoint(x: self.originX + self.width * 0.5, y: self.originY + self.height * 0.5)
     }
