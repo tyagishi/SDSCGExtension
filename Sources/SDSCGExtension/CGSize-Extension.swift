@@ -90,7 +90,9 @@ extension CGSize {
     public func rotate() -> CGSize {
         return CGSize(width: self.height, height: self.width)
     }
-    
+    public func rounded(_ rule: FloatingPointRoundingRule) -> CGSize {
+        CGSize(width: self.width.rounded(rule), height: self.height.rounded(rule))
+    }
 }
 
 // MARK: coordinate calc

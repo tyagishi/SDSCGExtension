@@ -24,4 +24,12 @@ final class CGSizeTests: XCTestCase {
         
         XCTAssertEqual(oneTwo, CGSize(width: 6, height: 8))
     }
+    
+    func test_rounded() async throws {
+        let case1 = CGSize(width: 1.1, height: 2.9)
+        let case2 = CGSize(width: -5.001, height: -5.9999)
+
+        XCTAssertEqual(case1.rounded(.awayFromZero), CGSize(width: 2, height: 3))
+        XCTAssertEqual(case2.rounded(.awayFromZero), CGSize(width: -6, height: -6))
+    }
 }
